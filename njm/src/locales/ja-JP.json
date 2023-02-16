@@ -40,7 +40,9 @@
       "default": "デフォルト",
       "version": "バージョン",
       "originalNotesCount": "ノート数",
-      "originalUsersCount": "ユーザー数"
+      "originalUsersCount": "ユーザー数",
+      "noteGrowthAvg": "ノート増加量(15日平均)",
+      "activeUserAvg": "アクティブユーザー数(週平均)"
     },
     "descending": "降順",
     "ascending": "昇順",
@@ -59,6 +61,8 @@
 
   "notes-count": "ノート数",
   "users-count": "ユーザー数",
+  "note-growth-count": "ノート増加量",
+  "active-users-count": "アクティブ人数",
 
   "404-text": "お探しのページは見つかりませんでした。",
   "toppage": "トップページ",

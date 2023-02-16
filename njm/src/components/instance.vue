@@ -30,8 +30,16 @@
         <div class="instance-footer-value" v-text="langNumber.format(instance.stats.originalNotesCount)" />
       </div>
       <div class="instance-footer-cell">
+        <div class="instance-footer-key" v-text="$ts['note-growth-count']" />
+        <div class="instance-footer-value" v-text="langNumber.format(instance.noteGrowthAvg)" />
+      </div>
+      <div class="instance-footer-cell">
         <div class="instance-footer-key" v-text="$ts['users-count']" />
         <div class="instance-footer-value" v-text="langNumber.format(instance.stats.originalUsersCount)" />
+      </div>
+      <div class="instance-footer-cell">
+        <div class="instance-footer-key" v-text="$ts['active-users-count']" />
+        <div class="instance-footer-value" v-text="langNumber.format(instance.activeUserAvg)" />
       </div>
       <div class="instance-footer-cell">
         <div class="instance-footer-key" v-text="$ts['instances-list-setting']['registration']" />

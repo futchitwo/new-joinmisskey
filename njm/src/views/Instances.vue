@@ -127,7 +127,8 @@ const addObserver = new IntersectionObserver(
 
 splash.value = false;
 
-fetch('https://instanceapp.misskey.page/instances.json')
+//fetch('https://instanceapp.misskey.page/instances.json')
+fetch('https://f2joinmisskey-api.netlify.app/instances.json')
   .then(res => res.json())
   .then(res => {
     loading = false;
@@ -185,6 +186,12 @@ function sort() {
     case 'originalUsersCount':
       _sorted = _sorted.sort((a, b) => (b.stats.originalUsersCount - a.stats.originalUsersCount) * (instancesSetting.orderDesc ? 1 : -1));
       break;
+    case 'noteGrowthAvg':
+      _sorted = _sorted.sort((a, b) => (b.noteGrowthAvg - a.noteGrowthAvg) * (instancesSetting.orderDesc ? 1 : -1));
+      break;
+    case 'activeUserAvg':
+      _sorted = _sorted.sort((a, b) => (b.activeUserAvg - a.activeUserAvg) * (instancesSetting.orderDesc ? 1 : -1));
+      break;
     default:
       _sorted = _sorted.sort((a, b) => (b.value - a.value) * (instancesSetting.orderDesc ? 1 : -1));
       break;
@@ -215,12 +222,14 @@ function sort() {
 
   sorted = _sorted.reduce((acc, instance, i, arr) => {
     acc.push({ type: 'instance', data: instance });
+    /*
     if (i === arr.length - 1) {
       acc.push({ type: 'ad', data: 'end' });
     } else if (i % 5 === 2) {
       acc.push({ type: 'ad', data: adNumber });
       adNumber++;
     }
+    */
     return acc;
   }, [] as SortedItem[]);
 

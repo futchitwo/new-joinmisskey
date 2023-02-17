@@ -146,7 +146,7 @@ export default defineComponent({
 
 @media (min-width: 768px) {
   .instance-header.nobanner {
-    height: 13rem;
+    height: 6rem;
     padding-bottom: 1rem;
   }
 }

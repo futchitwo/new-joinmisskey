@@ -51,7 +51,7 @@
       </div>
       <div class="instance-footer-cell">
         <div class="instance-footer-key" v-text="'メール登録'" />
-        <div class="instance-footer-value" v-text="instance.meta.emailRequiedForSignup ? '任意' : '必須'" />
+        <div class="instance-footer-value" v-text="instance.meta.emailRequiredForSignup ? '必須' : '任意'" />
       </div>
     </div>
   </a>

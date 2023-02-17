@@ -146,7 +146,7 @@ export default defineComponent({
 
 @media (min-width: 768px) {
   .instance-header.nobanner {
-    height: 6rem;
+    height: 8rem;
     padding-bottom: 1rem;
   }
 }
@@ -181,6 +181,7 @@ export default defineComponent({
 
 .instance-name {
   font-size: 1.75rem;
+  word-break: break-all;
 }
 .instance-name-url {
   font-size: 1.8rem;

@@ -45,6 +45,14 @@
         <div class="instance-footer-key" v-text="$ts['instances-list-setting']['registration']" />
         <div class="instance-footer-value" v-text="instance.meta.features.registration ? $ts['instances-list-setting']['registration-statuses'].open : $ts['instances-list-setting']['registration-statuses'].close" />
       </div>
+      <div class="instance-footer-cell">
+        <div class="instance-footer-key" v-text="LTL" />
+        <div class="instance-footer-value" v-text="instance.nodeinfo.metadata.disableLocalTimeline ? '閉鎖' : '解放'" />
+      </div>
+      <div class="instance-footer-cell">
+        <div class="instance-footer-key" v-text="メール登録" />
+        <div class="instance-footer-value" v-text="instance.meta.emailRequiedForSignup ? '任意' : '必須'" />
+      </div>
     </div>
   </a>
   </div>

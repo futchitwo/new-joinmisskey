@@ -26,8 +26,10 @@
       <transition-group name="instance-list-trans">
         <template v-for="(item, i) in sortedShowing" :key="item.type === 'instance' ? item.data.url : `ad-${item.data}`">
           <Instance v-if="item.type === 'instance'" :instance="item.data" :eager="i < 12" />
-          <InFeedAdsense v-else data-ad-format="fluid" data-ad-layout-key="-6t+de-31-76+qt"
+          <!-- REMOVE_GAD_$2000
+            <InFeedAdsense v-else data-ad-format="fluid" data-ad-layout-key="-6t+de-31-76+qt"
             data-ad-client="ca-pub-1736621122676736" data-ad-slot="9141582521" class="adswrapper-infeed" />
+          -->
         </template>
       </transition-group>
     </div>
@@ -222,6 +224,7 @@ function sort() {
 
   sorted = _sorted.reduce((acc, instance, i, arr) => {
     acc.push({ type: 'instance', data: instance });
+    // REMOVE_GAD_$2000
     /*
     if (i === arr.length - 1) {
       acc.push({ type: 'ad', data: 'end' });

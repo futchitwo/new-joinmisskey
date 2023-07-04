@@ -56,6 +56,12 @@
       "close": "招待制"
     },
 
+    "ltl": "LTL",
+    "ltl-statuses": {
+      "open": "開放",
+      "close": "閉鎖"
+    },
+
     "accept": "適用"
   },
 

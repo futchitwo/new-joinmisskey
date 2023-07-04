@@ -19,6 +19,10 @@
           -
           <span
             v-text="instancesSetting.registrationStatus.map(v => $ts['instances-list-setting']['registration-statuses'][v]).join(', ')" /><br>
+          <span v-text="$ts['instances-list-setting'].ltl" />
+          -
+          <span
+            v-text="instancesSetting.ltlStatus.map(v => $ts['instances-list-setting']['ltl-statuses'][v]).join(', ')" /><br>
         </div>
       </div>
     </div>
@@ -75,10 +79,19 @@
             <div class="col-12 mb-3">
               <div class="fw-bold" v-text="$ts['instances-list-setting']['registration']" />
               <div class="form-check form-check-inline" v-for="stat in registrationStatuses" :key="stat">
-                <input class="form-check-input" type="checkbox" :id="`select-${stat}`" :value="stat"
+                <input class="form-check-input" type="checkbox" :id="`select-registration-${stat}`" :value="stat"
                   v-model="instancesSetting.registrationStatus">
-                <label class="form-check-label" :for="`select-${stat}`"
+                <label class="form-check-label" :for="`select-registration-${stat}`"
                   v-text="$ts['instances-list-setting']['registration-statuses'][stat]" />
+              </div>
+            </div>
+            <div class="col-12 mb-3">
+              <div class="fw-bold" v-text="$ts['instances-list-setting']['ltl']" />
+              <div class="form-check form-check-inline" v-for="stat in ltlStatuses" :key="stat">
+                <input class="form-check-input" type="checkbox" :id="`select-ltl-${stat}`" :value="stat"
+                  v-model="instancesSetting.ltlStatus">
+                <label class="form-check-label" :for="`select-ltl-${stat}`"
+                  v-text="$ts['instances-list-setting']['ltl-statuses'][stat]" />
               </div>
             </div>
             <div class="col-12">
@@ -104,7 +117,7 @@ import { setDescription } from '@/description';
 import Instance from '@/components/instance.vue';
 import Header from '@/components/header.vue';
 import Footer from '@/components/footer.vue';
-import { repositories, orderOptions, registrationStatuses, instanceLanguages } from '@/instances-list-setting';
+import { repositories, orderOptions, registrationStatuses, ltlStatuses, instanceLanguages } from '@/instances-list-setting';
 import { splash } from '@/splash';
 import { i18n } from '@/i18n';
 
@@ -162,6 +175,10 @@ function acceptSetting() {
     instancesSetting.registrationStatus = [...registrationStatuses];
   }
 
+  if (instancesSetting.ltlStatus.length === 0) {
+    instancesSetting.ltlStatus = [...ltlStatuses];
+  }
+
   if (instancesSetting.language.length === 0) {
     instancesSetting.language = [...instanceLanguages];
   }
@@ -215,6 +232,20 @@ function sort() {
     } else {
       _sorted = _sorted.filter(instance => {
         return !instance.meta.features.registration;
+      });
+    }
+  }
+  //#region
+
+  //#region filter ltl
+  if (instancesSetting.ltlStatus.length == 1) {
+    if (instancesSetting.ltlStatus[0] === 'open') {
+      _sorted = _sorted.filter(instance => {
+        return !instance.nodeinfo.metadata.disableLocalTimeline;
+      });
+    } else {
+      _sorted = _sorted.filter(instance => {
+        return instance.nodeinfo.metadata.disableLocalTimeline;
       });
     }
   }

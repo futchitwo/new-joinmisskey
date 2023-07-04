@@ -6,6 +6,7 @@ export const repositories = [
 ] as const;
 export const orderOptions = ['default', 'originalNotesCount', 'originalUsersCount', 'noteGrowthAvg', 'activeUserAvg'] as const;
 export const registrationStatuses = ['open', 'close'] as const;
+export const ltlStatuses = ['open', 'close'] as const;
 export const instanceLanguages = ['ja', 'en', 'de', 'fr', 'zh', 'ko', 'ru', 'th', 'es', 'nl', 'bh', 'sv', 'it', 'cs', 'id', 'uk', 'pt'] as const;
 
 export const languageLookup: { [x: string]: typeof instanceLanguages[number][] } = {
@@ -24,6 +25,7 @@ export interface InstancesSetting {
     orderBy: typeof orderOptions[number];
     orderDesc: boolean;
     registrationStatus: typeof registrationStatuses[number][];
+    ltlStatus: typeof ltlStatuses[number][];
     language: typeof instanceLanguages[number][];
 }
 
@@ -32,5 +34,6 @@ export const defaultInstancesSetting: InstancesSetting = reactive({
     orderBy: 'default',
     orderDesc: true,
     registrationStatus: ['open'],
+    ltlStatus: ['open', 'close'],
     language: languageLookup[lang] || [...instanceLanguages],
 });

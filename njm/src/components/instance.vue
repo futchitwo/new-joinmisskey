@@ -59,7 +59,7 @@
       </div>
       <div class="instance-footer-cell">
         <div class="instance-footer-key" v-text="'ドライブ'" />
-        <div class="instance-footer-value" v-text="`${langNumber.format(instance.meta.policies?.driveCapacityMb || instance.meta.driveCapacityPerLocalUserMb)}` MB" />
+        <div class="instance-footer-value" v-text="`${langNumber.format(instance.meta.policies?.driveCapacityMb || instance.meta.driveCapacityPerLocalUserMb)} MB`" />
       </div>
     </div>
   </a>

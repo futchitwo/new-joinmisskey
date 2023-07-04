@@ -53,6 +53,14 @@
         <div class="instance-footer-key" v-text="'メール登録'" />
         <div class="instance-footer-value" v-text="instance.meta.emailRequiredForSignup ? '必須' : '任意'" />
       </div>
+      <div class="instance-footer-cell">
+        <div class="instance-footer-key" v-text="'検索'" />
+        <div class="instance-footer-value" v-text="instance.meta.policies?.canSearchNotes === false ? '無効' : '有効'" />
+      </div>
+      <div class="instance-footer-cell">
+        <div class="instance-footer-key" v-text="'ドライブ'" />
+        <div class="instance-footer-value" v-text="`${langNumber.format(instance.meta.policies?.driveCapacityMb || instance.meta.driveCapacityPerLocalUserMb)}` MB" />
+      </div>
     </div>
   </a>
   </div>
